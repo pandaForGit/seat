@@ -26,7 +26,7 @@ public class RandomMachine {
     public void deleteRedisKey(){
         redisUtils.set(DateUtil.getDay()+"","0");
     }
-    @Scheduled(cron = "0/1 * * * * *")
+//    @Scheduled(cron = "0/1 * * * * *")
     public void startMachine() {
 //        log.info("startMachine启动");
         int number = 0;

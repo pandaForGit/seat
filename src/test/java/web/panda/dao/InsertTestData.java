@@ -40,4 +40,9 @@ public class InsertTestData {
         }
 //        redisUtils.set("sumOfUser",);
     }
+    @Test
+    public void getBinaryString(){
+        byte[] bytes = {106, 15, 15, 59, 2, 32, 21, 107};
+        System.out.println(new String(bytes));
+    }
 }

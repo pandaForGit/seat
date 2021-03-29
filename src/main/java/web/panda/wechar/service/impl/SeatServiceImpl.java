@@ -28,4 +28,12 @@ public class SeatServiceImpl implements SeatService {
         ObjectResponseResult objectResponseResult = new ObjectResponseResult(CommonCode.SUCCESS,objectResult);
         return objectResponseResult;
     }
+
+    @Override
+    public void changState(int number, int state) {
+        List<Seat> seatList = seatDao.findByNumber(number);
+        Seat seat = seatList.get(0);
+        seat.setState(state);
+        seatDao.saveAndFlush(seat);
+    }
 }
