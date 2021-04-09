@@ -40,7 +40,7 @@ public class ServerThread implements Runnable {
 //                System.out.println(Arrays.toString(buf));
                 for (int i = 0; i < len; i++) {
                     binaryStringArray[i] = Integer.toBinaryString((buf[i] & 0xFF) + 0x100).substring(1);
-//                    System.out.println("data[" + i + "]" + binaryStringArray[i]);
+                    System.out.println("data[" + i + "]" + binaryStringArray[i]);
 //                    pw.write("data[" + i + "]" + binaryStringArray[i]);
                 }
                 String info = new String(buf, 0, 8);
@@ -49,13 +49,14 @@ public class ServerThread implements Runnable {
                 pw.flush();//输出缓冲区
                 if (buf[4] == 1) {
                     int seatNumber = buf[3];
-                    int state = 0;
-                    if (buf[5] == 32) {
-                        state = 1;
+                    int state = 1;
+                    System.out.println(buf[5]);
+                    if (buf[5] == 1) {
+                        state = 0;
                     }
                     seatService.changState(seatNumber, state);
                     System.out.println("SeatStateChange  Event"+new String(buf));
-//                    log.info("将"+seatNumber+"状态改为:"+state);
+                    log.info("将"+seatNumber+"状态改为:"+state);
 //                    pw.write("将"+seatNumber+"状态改为:"+state);
                 }
                 if(buf[4]==2){
